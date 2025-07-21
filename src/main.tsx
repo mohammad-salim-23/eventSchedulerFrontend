@@ -4,12 +4,13 @@ import './index.css'
 
 import { RouterProvider } from 'react-router-dom'
 import router from './Routes/Routes.tsx'
+import { Toaster } from 'sonner'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router}>
-     
-    </RouterProvider>
+    <RouterProvider router={router}/>
+      <Toaster position='top-right'/>
+  
    
   </StrictMode>,
 )
