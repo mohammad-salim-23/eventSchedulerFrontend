@@ -5,13 +5,14 @@ import { useNavigate } from "react-router-dom";
 import EventForm from "../event/eventForm";
 
 import bannerImage from "../../../assets/images/backgroundevent.jpg";
+import { getCurrentUser } from "../../../services/AuthService";
 
 const Banner = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
   // Replace with your actual auth hook or context
-  const user = JSON.parse(localStorage.getItem("accessToken") || "null");
+  const user = getCurrentUser();
 
   const handleCreateEvent = () => {
     if (!user) {
@@ -40,7 +41,7 @@ const Banner = () => {
 
         <button
           onClick={handleCreateEvent}
-          className="relative px-6 py-3 text-lg border-2 border-teal-500 text-teal-500 hover:bg-white hover:text-teal-700 transition font-bold rounded-md"
+          className="relative px-6 py-3 text-lg border-2 border-teal-500 text-teal-500 hover:bg-white hover:text-teal-700 transition font-bold rounded-md cursor-pointer"
         >
           Create Event
         </button>

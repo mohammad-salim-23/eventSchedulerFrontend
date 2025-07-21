@@ -46,14 +46,14 @@ const SignIn = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-100 to-blue-200 flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-teal-100 to-blue-200 flex items-center justify-center px-4 ">
       <Helmet>
         <title>Event Scheduler | Login</title>
       </Helmet>
 
       <div className="bg-white shadow-2xl rounded-2xl flex flex-col md:flex-row max-w-5xl w-full overflow-hidden">
         {/* Left Side - Form */}
-        <div className="w-full md:w-1/2 p-10 sm:p-14 flex flex-col justify-center">
+        <div className="w-full md:w-1/2 p-10 sm:p-14 flex flex-col justify-start lg:mt-8">
           <h2 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">
             Sign in to your account
           </h2>
@@ -127,13 +127,14 @@ const SignIn = () => {
         </div>
 
         {/* Right Side - Image */}
-        <div className="hidden md:block md:w-1/2 bg-gradient-to-tr from-teal-400 to-blue-600">
-          <img
-            src="https://d3nn873nee648n.cloudfront.net/1200x1800-new/20732/SM1072546.jpg"
-            alt="Event Scheduler Login"
-            className="object-cover w-full h-full rounded-r-2xl"
-          />
-        </div>
+      <div className="hidden md:flex md:w-1/2 items-center justify-center">
+  <img
+    src="https://i.pinimg.com/736x/f8/21/96/f82196fd766d33bbcfc9e8e7cf06ebe8.jpg"
+    alt="Event Scheduler Login"
+    className="object-contain max-h-full"
+  />
+</div>
+
       </div>
     </div>
   );

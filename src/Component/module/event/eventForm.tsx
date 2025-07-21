@@ -13,7 +13,9 @@ const EventForm = () => {
     category: "Work",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -22,6 +24,8 @@ const EventForm = () => {
     setLoading(true);
     try {
       const response = await createEvent(formData);
+      console.log("Event created:", response);
+      console.log("Event created:", response);
       Swal.fire({
         icon: "success",
         title: "Event Created",
@@ -50,6 +54,8 @@ const EventForm = () => {
     <div className="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-md mt-10">
       <h2 className="text-3xl font-bold text-primaryColor mb-6 text-center">Create New Event</h2>
       <form onSubmit={handleSubmit} className="space-y-5">
+
+        {/* Title */}
         <div>
           <label htmlFor="title" className="block font-semibold mb-1">Title</label>
           <input
@@ -60,10 +66,11 @@ const EventForm = () => {
             onChange={handleChange}
             required
             placeholder="Event title"
-            className="input input-bordered w-full"
+            className="border border-teal-300 rounded-md px-3 py-2 w-full focus:outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
           />
         </div>
 
+        {/* Date */}
         <div>
           <label htmlFor="date" className="block font-semibold mb-1">Date</label>
           <input
@@ -73,10 +80,11 @@ const EventForm = () => {
             value={formData.date}
             onChange={handleChange}
             required
-            className="input input-bordered w-full"
+            className="border border-teal-300 rounded-md px-3 py-2 w-full focus:outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
           />
         </div>
 
+        {/* Time */}
         <div>
           <label htmlFor="time" className="block font-semibold mb-1">Time</label>
           <input
@@ -86,10 +94,11 @@ const EventForm = () => {
             value={formData.time}
             onChange={handleChange}
             required
-            className="input input-bordered w-full"
+            className="border border-teal-300 rounded-md px-3 py-2 w-full focus:outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
           />
         </div>
 
+        {/* Category */}
         <div>
           <label htmlFor="category" className="block font-semibold mb-1">Category</label>
           <select
@@ -97,8 +106,8 @@ const EventForm = () => {
             id="category"
             value={formData.category}
             onChange={handleChange}
-            className="select select-bordered w-full"
             required
+            className="border border-teal-300 rounded-md px-3 py-2 w-full focus:outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
           >
             <option value="Work">Work</option>
             <option value="Personal">Personal</option>
@@ -106,6 +115,7 @@ const EventForm = () => {
           </select>
         </div>
 
+        {/* Notes */}
         <div>
           <label htmlFor="notes" className="block font-semibold mb-1">Notes</label>
           <textarea
@@ -114,14 +124,15 @@ const EventForm = () => {
             value={formData.notes}
             onChange={handleChange}
             placeholder="Additional notes (optional)"
-            className="textarea textarea-bordered w-full"
+            className="border border-teal-300 rounded-md px-3 py-2 w-full focus:outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
           />
         </div>
 
+        {/* Submit Button */}
         <button
           type="submit"
           disabled={loading}
-          className={`btn w-full bg-primaryColor hover:bg-primaryColorDark text-white font-semibold transition-colors duration-300 ${loading ? "opacity-70 cursor-not-allowed" : ""}`}
+          className={`text-center py-2 rounded-lg bg-teal-500 hover:bg-teal-700 text-white font-semibold transition duration-300 text-lg w-full ${loading ? "opacity-70 cursor-not-allowed" : ""}`}
         >
           {loading ? "Creating..." : "Create Event"}
         </button>

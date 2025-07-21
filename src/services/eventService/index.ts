@@ -11,14 +11,6 @@ const apiClient = axios.create({
   },
 });
 
-// Add token to requests if needed
-apiClient.interceptors.request.use((config) => {
-  const token = localStorage.getItem("accessToken");
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
 
 
 export const getAllEvents = async () => {
@@ -29,32 +21,59 @@ export const getAllEvents = async () => {
     throw new Error(error.response?.data?.message || "Failed to fetch events");
   }
 };
-
 export const createEvent = async (eventData: any) => {
   try {
-    const response = await apiClient.post("/events", eventData);
+    const token = localStorage.getItem("accessToken");
+    const response = await apiClient.post("/events", eventData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error: any) {
     throw new Error(error.response?.data?.message || "Failed to create event");
   }
 };
+//get individual user event
+export const getUserEvents = async () => {
+  try {
+    const token = localStorage.getItem("accessToken");
+    const response = await apiClient.get("/events/my-events", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error.response?.data?.message || "Failed to fetch user events");
+  }
+};
 
-/**
- * Archive (update) an event by ID (protected route)
- */
+
+//  Archive (update) an event by ID (protected route)
+ 
 export const archiveEvent = async (id: string) => {
   try {
-    const response = await apiClient.put(`/events/${id}`);
+    const token = localStorage.getItem("accessToken");
+    const response = await apiClient.put(`/events/${id}`, null, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error: any) {
     throw new Error(error.response?.data?.message || "Failed to archive event");
   }
 };
 
-
 export const deleteEvent = async (id: string) => {
   try {
-    const response = await apiClient.delete(`/events/${id}`);
+    const token = localStorage.getItem("accessToken");
+    const response = await apiClient.delete(`/events/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error: any) {
     throw new Error(error.response?.data?.message || "Failed to delete event");
