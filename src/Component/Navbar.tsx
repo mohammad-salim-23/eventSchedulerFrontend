@@ -50,7 +50,7 @@ const Navbar = () => {
           {user ? (
             <div className="relative group">
               <img
-                src="https://i.ibb.co/YbBRkjH/user-avatar.png"
+                src="https://i.pinimg.com/736x/77/13/4d/77134de9f47dcd431865c0c2d8d68ad0.jpg"
                 alt="User Avatar"
                 className="w-10 h-10 rounded-full border-2 border-primary cursor-pointer"
               />
@@ -105,7 +105,7 @@ const Navbar = () => {
               }}
               className="block text-red-500 font-medium w-full text-left"
             >
-              <LogOut className="inline w-4 h-4 mr-2" /> Logout
+              <LogOut className="inline w-4 h-4 mr-2 cursor-pointer" /> Logout
             </button>
           ) : (
             <>

@@ -46,76 +46,94 @@ const SignIn = () => {
   };
 
   return (
-    <div className="min-h-screen bg-base-200 flex flex-col md:flex-row md:items-center md:justify-center p-6">
+    <div className="min-h-screen bg-gradient-to-br from-teal-100 to-blue-200 flex items-center justify-center px-4 py-12">
       <Helmet>
         <title>Event Scheduler | Login</title>
       </Helmet>
 
-      <div className="card md:w-1/2 max-w-md p-8 bg-white rounded-lg shadow-lg">
-        <h1 className="text-4xl font-bold mb-6 text-center text-primaryColor">Login to Your Account</h1>
-        <form onSubmit={handleLogin} className="space-y-5">
-          <div className="form-control">
-            <label htmlFor="email" className="label-text font-semibold mb-1">Email</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Enter your email"
-              className="input input-bordered w-full"
-              required
-              disabled={loading}
-              autoComplete="username"
-            />
-          </div>
+      <div className="bg-white shadow-2xl rounded-2xl flex flex-col md:flex-row max-w-5xl w-full overflow-hidden">
+        {/* Left Side - Form */}
+        <div className="w-full md:w-1/2 p-10 sm:p-14 flex flex-col justify-center">
+          <h2 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">
+            Sign in to your account
+          </h2>
 
-          <div className="form-control">
-            <label htmlFor="password" className="label-text font-semibold mb-1">Password</label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Enter your password"
-              className="input input-bordered w-full"
-              required
-              disabled={loading}
-              autoComplete="current-password"
-            />
-            <div className="mt-2 text-right">
-              <Link
-                to="/forgot-password"
-                className="text-sm text-primaryColor hover:underline"
-              >
-                Forgot password?
-              </Link>
+          <form onSubmit={handleLogin} className="space-y-6">
+            {/* Email */}
+            <div>
+              <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                Email Address
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                required
+                disabled={loading}
+                autoComplete="username"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 text-gray-900 placeholder-gray-400
+                  focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition"
+              />
             </div>
-          </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className={`btn w-full bg-primaryColor hover:bg-primaryColorDark transition-colors duration-300 font-semibold ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
-          >
-            {loading ? 'Logging in...' : 'Login'}
-          </button>
-        </form>
+            {/* Password */}
+            <div>
+              <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
+                Password
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Enter your password"
+                required
+                disabled={loading}
+                autoComplete="current-password"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 text-gray-900 placeholder-gray-400
+                  focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition"
+              />
+              <div className="mt-2 text-right">
+                <Link
+                  to="/forgot-password"
+                  className="text-sm text-teal-600 hover:text-teal-800 font-medium"
+                >
+                  Forgot password?
+                </Link>
+              </div>
+            </div>
 
-        <p className="text-center mt-6 text-sm">
-          New here?{' '}
-          <Link to="/signUp" className="text-primaryColor font-semibold hover:underline">
-            Create a new account
-          </Link>
-        </p>
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={loading}
+              className={`w-full py-3 rounded-lg text-white font-semibold
+                bg-gradient-to-r from-teal-500 to-teal-600
+                hover:from-teal-600 hover:to-teal-700
+                focus:outline-none focus:ring-4 focus:ring-teal-300
+                transition duration-300 ease-in-out
+                ${loading ? 'opacity-70 cursor-not-allowed' : 'cursor-pointer'}`}
+            >
+              {loading ? 'Logging in...' : 'Login'}
+            </button>
+          </form>
 
-      
-       
-      </div>
+          <p className="mt-8 text-center text-gray-600 text-sm">
+            New to Event Scheduler?{' '}
+            <Link to="/signUp" className="text-teal-600 font-semibold hover:text-teal-800">
+              Create an account
+            </Link>
+          </p>
+        </div>
 
-      <div className="hidden md:block md:flex-1 ml-12">
-        <img
-          src="https://d3nn873nee648n.cloudfront.net/1200x1800-new/20732/SM1072546.jpg"
-          alt="Event Scheduler Login"
-          className="rounded-lg shadow-lg object-cover w-full h-[500px]"
-        />
+        {/* Right Side - Image */}
+        <div className="hidden md:block md:w-1/2 bg-gradient-to-tr from-teal-400 to-blue-600">
+          <img
+            src="https://d3nn873nee648n.cloudfront.net/1200x1800-new/20732/SM1072546.jpg"
+            alt="Event Scheduler Login"
+            className="object-cover w-full h-full rounded-r-2xl"
+          />
+        </div>
       </div>
     </div>
   );
