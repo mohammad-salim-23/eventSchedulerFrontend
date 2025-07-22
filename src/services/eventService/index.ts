@@ -55,7 +55,7 @@ export const getUserEvents = async () => {
 export const archiveEvent = async (id: string) => {
   try {
     const token = localStorage.getItem("accessToken");
-    const response = await apiClient.put(`/events/${id}`, null, {
+    const response = await apiClient.patch(`/events/${id}`, {}, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

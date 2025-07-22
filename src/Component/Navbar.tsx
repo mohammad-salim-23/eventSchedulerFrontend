@@ -43,6 +43,9 @@ const Navbar = () => {
           <Link to="/events" className="text-gray-700 font-medium hover:text-teal-700">
             All Events
           </Link>
+           <Link to="/my-events" className="text-gray-700 font-medium hover:text-teal-700">
+            My Created Events
+          </Link>
         </div>
 
         {/* Right Side Auth Buttons / Avatar (Desktop) */}
@@ -96,7 +99,9 @@ const Navbar = () => {
           <Link to="/events" className="block text-gray-700 font-medium hover:text-teal-700" onClick={() => setIsMobileMenuOpen(false)}>
             All Events
           </Link>
-
+           <Link to="/my-events" className="text-gray-700 font-medium hover:text-teal-700"  onClick={() => setIsMobileMenuOpen(false)}>
+            My Created Events
+          </Link>
           {user ? (
             <button
               onClick={() => {

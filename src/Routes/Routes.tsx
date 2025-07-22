@@ -4,6 +4,8 @@ import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home/Home";
 import RegisterPage from "../Pages/Register/Register";
 import SignIn from "../Pages/SignIn/SIgInPage";
+import EventsList from "../Pages/ALlEvents/page";
+import UserEventsTable from "../Pages/MyEvents/page";
 
 const router = createBrowserRouter([
    {
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
          {
             path:"/signin",
             element:<SignIn></SignIn>
+         },
+         {
+            path:"/events",
+            element:<EventsList></EventsList>
+         },
+         {
+            path:"/my-events",
+            element:<UserEventsTable></UserEventsTable>
          }
     ]}
    

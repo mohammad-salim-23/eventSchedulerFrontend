@@ -132,7 +132,7 @@ const EventForm = () => {
         <button
           type="submit"
           disabled={loading}
-          className={`text-center py-2 rounded-lg bg-teal-500 hover:bg-teal-700 text-white font-semibold transition duration-300 text-lg w-full ${loading ? "opacity-70 cursor-not-allowed" : ""}`}
+          className={`text-center py-2 rounded-lg cursor-pointer bg-teal-500 hover:bg-teal-700 text-white font-semibold transition duration-300 text-lg w-full ${loading ? "opacity-70 cursor-not-allowed" : ""}`}
         >
           {loading ? "Creating..." : "Create Event"}
         </button>
